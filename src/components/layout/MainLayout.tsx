@@ -1,9 +1,32 @@
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
+import { Content, Header } from "antd/es/layout/layout";
 import { Outlet } from "react-router-dom";
-import sidebarRoutes from "../../routes/sidebarRoutes";
-import { adminPaths } from "../../routes/adminRoutes";
-const { Header, Content, Footer, Sider } = Layout;
-//? HARD CODED WAY
+import Sidebar from "./Sidebar";
+
+const MainLayout = () => {
+  return (
+    <Layout style={{ height: "100vh" }}>
+      <Sidebar></Sidebar>
+      <Layout>
+        <Header style={{ padding: 0 }} />
+        <Content style={{ margin: "24px 16px 0" }}>
+          <div
+            style={{
+              padding: 24,
+              minHeight: 360,
+            }}
+          >
+            <Outlet></Outlet>
+          </div>
+        </Content>
+      </Layout>
+    </Layout>
+  );
+};
+
+export default MainLayout;
+
+//! HARD CODED WAY
 // const items: MenuProps["items"] = [
 //   {
 //     key: "Dashboard",
@@ -30,52 +53,3 @@ const { Header, Content, Footer, Sider } = Layout;
 // ];
 
 //
-
-const MainLayout = () => {
-  return (
-    <Layout style={{ height: "100vh" }}>
-      <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-      >
-        <div style={{ textAlign: "center", marginTop: "1rem" }}>
-          <h1 style={{ color: "white" }}>Bond University</h1>
-        </div>
-        <div
-          style={{ display: "flex", alignItems: "center", margin: "0.5rem" }}
-          className="demo-logo-vertical"
-        />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["4"]}
-          items={sidebarRoutes(adminPaths, "admin")}
-        />
-      </Sider>
-      <Layout>
-        <Header style={{ padding: 0 }} />
-        <Content style={{ margin: "24px 16px 0" }}>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-            }}
-          >
-            <Outlet></Outlet>
-          </div>
-        </Content>
-        <Footer style={{ textAlign: "center" }}>
-          BonDeV ©{new Date().getFullYear()} Created by Bondon Datta
-        </Footer>
-      </Layout>
-    </Layout>
-  );
-};
-
-export default MainLayout;

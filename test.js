@@ -1,58 +1,58 @@
-const adminPaths = [
-    {
-        name: "Dashboard",
-        path: "dashboard",
-        element: '<AdminDashboard></AdminDashboard>',
-    },
-    {
-        name: "User Management",
-        children: [
-            {
-                name: "Create Admin",
-                path: "create-admin",
-                element: "<CreateAdmin></CreateAdmin>",
-            },
-            {
-                name: "Create Faculty",
-                path: "create-faculty",
-                element: "<CreateFaculty></CreateFaculty>",
-            },
-            {
-                name: "Create Student",
-                path: "create-student",
-                element: "<CreateStudent></CreateStudent>",
-            },
-        ],
-    },
+// const adminPaths = [
+//     {
+//         name: "Dashboard",
+//         path: "dashboard",
+//         element: '<AdminDashboard></AdminDashboard>',
+//     },
+//     {
+//         name: "User Management",
+//         children: [
+//             {
+//                 name: "Create Admin",
+//                 path: "create-admin",
+//                 element: "<CreateAdmin></CreateAdmin>",
+//             },
+//             {
+//                 name: "Create Faculty",
+//                 path: "create-faculty",
+//                 element: "<CreateFaculty></CreateFaculty>",
+//             },
+//             {
+//                 name: "Create Student",
+//                 path: "create-student",
+//                 element: "<CreateStudent></CreateStudent>",
+//             },
+//         ],
+//     },
 
 
-];
+// ];
 
 
-const adminSidebarItems = adminPaths.reduce((acc, item) => {
+// const adminSidebarItems = adminPaths.reduce((acc, item) => {
 
-    if (item.name && item.path) {
-        acc.push({
-            key: item.name,
-            label: 'Navlink'
-        })
-    }
+//     if (item.name && item.path) {
+//         acc.push({
+//             key: item.name,
+//             label: 'Navlink'
+//         })
+//     }
 
-    if (item.children) {
-        acc.push({
-            key: item.name,
-            lable: item.name,
-            children: item.children.map(child => ({
-                key: child.name,
-                label: 'Navlink'
-            }))
-        })
-    }
+//     if (item.children) {
+//         acc.push({
+//             key: item.name,
+//             lable: item.name,
+//             children: item.children.map(child => ({
+//                 key: child.name,
+//                 label: 'Navlink'
+//             }))
+//         })
+//     }
 
-    return acc
-}, [])
+//     return acc
+// }, [])
 
-console.log(JSON.stringify(adminSidebarItems))
+// console.log(JSON.stringify(adminSidebarItems))
 
 
 // const adminRoutes = adminPaths.reduce((acc, item) => {
