@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
+export type TUSer = {
+  userId: string;
+  role: string;
+  iat: number;
+  exp: number;
+};
 type TAuth = {
-  user: null | object;
+  user: null | TUSer;
   token: null | object;
 };
 
