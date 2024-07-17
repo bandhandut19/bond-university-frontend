@@ -3,19 +3,22 @@ import sidebarRoutes from "../../routes/sidebarRoutes";
 import { adminPaths } from "../../routes/adminRoutes";
 import { facultyPaths } from "../../routes/facultyRoutes";
 import { studentPaths } from "../../routes/studentRoutes";
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 
 const { Sider } = Layout;
 
 const userRole = {
+  // SuperAdmin: "superAdmin",
   ADMIN: "admin",
   FACULTY: "faculty",
   STUDENT: "student",
 };
 
 const Sidebar = () => {
-  const role = "student";
+  const user = useAppSelector(selectCurrentUser);
   let sidebaritems;
-  switch (role) {
+  switch (user!.role) {
     case userRole.ADMIN:
       sidebaritems = sidebarRoutes(adminPaths, userRole.ADMIN);
       break;
@@ -29,18 +32,9 @@ const Sidebar = () => {
     default:
       break;
   }
-  console.log(sidebaritems);
+  // console.log(sidebaritems);
   return (
-    <Sider
-      breakpoint="lg"
-      collapsedWidth="0"
-      onBreakpoint={(broken) => {
-        console.log(broken);
-      }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
-      }}
-    >
+    <Sider breakpoint="lg" collapsedWidth="0">
       <div style={{ textAlign: "center", marginTop: "1rem" }}>
         <h1 style={{ color: "white" }}>Bond University</h1>
       </div>
